@@ -1,0 +1,19 @@
+/* Define Grid */
+.grid{
+    width: 200px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: yellow;
+}
+/* Define Grid divs */
+.grid div {
+    height: 20px;
+    width: 20px;
+    background-color: red;
+}
+/* Define Tetrominoes colors */
+
+.tetromino {
+    background-color: blue;
+}
