@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const width = 10
   let nextRandom = 0
   let timerid
+  let score = 0
+  const colors = [
+    'red', 'green', 'blue', 'orange', 'pink',
+    'purple'
+]
     
 // Define Tetrominoes (Tetris blocks) arrays
 
@@ -60,6 +65,7 @@ let current = theTetrominoes[random][currentRotation]
 function draw() {
     current.forEach(index => {
         squares[currentPosition + index].classList.add('tetromino')
+        squares[currentPosition + index].style.backgroundColor = colors[random]
     })
   }
 
@@ -67,6 +73,7 @@ function draw() {
 function undraw() {
     current.forEach(index =>{
         squares[currentPosition + index].classList.remove('tetromino')
+        squares[currentPosition + index].style.backgroundColor = ''
     })
   } 
   
@@ -105,6 +112,7 @@ function freeze(){
     currentPosition = 4
     draw()
     displayShape()
+    addScore()
     }
 }
 // Move tetromino left, unless edge or blockage
@@ -186,7 +194,7 @@ startBtn.addEventListener('click', () => {
 function addScore() {
     for (let i= 0; i < 199; i +=width) {
         const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+8, i+9]
-        
+
         if (row.every(index => squares[index].classList.contains('taken'))) {
             score += 10
             scoreDisplay.innerHTML = score
@@ -201,5 +209,14 @@ function addScore() {
         }
     }
 }
+
+//Define function Game Over
+function gameOver() {
+    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+        scoreDisplay.innerHTML = 'end'
+        clearInterval(timerId)
+    }
+}
+
 
 })
