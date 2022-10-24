@@ -17,3 +17,18 @@
 .tetromino {
     background-color: springgreen;
 }
+
+/* Mini Grid display*/
+.mini-grid {
+    margin-left: 50px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: yellow;
+}
+/* Define mini Grid divs */
+.mini-grid div {
+    height: 20px;
+    width: 20px;
+}
