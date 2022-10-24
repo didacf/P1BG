@@ -54,8 +54,10 @@ const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromi
 let currentPosition = 4
 let currentRotation = 0
 
+console.log(theTetrominoes[0][0])
+
 // Select randomly a Tetromino and first rotation
-let random = Math.floor(Math.random() * theTetrominoes.length)
+let random = Math.floor(Math.random()*theTetrominoes.length)
 let current = theTetrominoes[random][currentRotation]
 
 //Define and draw tetromino
@@ -112,7 +114,7 @@ function freeze() {
     }
 }
 // Move tetromino left, unless edge or blockage
-function moveLeft(){
+function moveLeft() {
     undraw()
     const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
     if(!isAtLeftEdge) currentPosition -=1
@@ -125,8 +127,8 @@ function moveLeft(){
 // Move tetromino right, unless edge or blockage
 function moveRight(){
     undraw()
-    const isAtRighEdge = current.some(index => (currentPosition + index) % width === -1)
-    if(!isAtRightEdge) currentPosition +=1
+    const isAtRighEdge = current.some(index => (currentPosition + index) % width === width -1)
+    if(!isAtRighEdge) currentPosition +=1
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
         currentPosition -=1
     }
