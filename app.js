@@ -24,23 +24,19 @@ const lTetromino = [
     [1, width+1, width*2+1, width*2],
     [width+1, width*2, width*2+1,width*2+2]
 ]
-
 const zTetromino = [
     [0, width, width+1, width*2+1],
     [width+1, width+2, width*2, width*2+1],
     [0, width, width+1, width*2+1],
     [width+1, width+2, width*2, width*2+1]      
 ]
-
 const tTetromino = [
     [1, width, width+1, width+2],
     [1, width+1, width+2, width*2+1],
     [width, width+1,width+2, width*2+1],
     [1, width, width+1, width*2+1]
 ]
-
 const oTetromino = [
-    
     [0, 1, width, width+1],
     [0, 1, width, width+1],
     [0, 1, width, width+1]        
@@ -72,7 +68,7 @@ function draw() {
 
 // Remove and undraw the tetromino
 function undraw() {
-    current.forEach(index =>{
+    current.forEach(index => {
         squares[currentPosition + index].classList.remove('tetromino')
         squares[currentPosition + index].style.backgroundColor = ''
     })
@@ -91,6 +87,7 @@ function control(key) {
     moveRight()
   } else if (key.keyCode === 40) {
     moveDown()
+}
 }
 document.addEventListener('keyup', control)
 
