@@ -1,3 +1,8 @@
+/* Container defined */
+.container {
+    display: flex;
+}
+
 /* Define Grid */
 .grid{
     width: 200px;
