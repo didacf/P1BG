@@ -3,11 +3,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid')
   let squares = Array.from(document.querySelectorAll('.grid div'))
-  const ScoreDisplay = document.querySelector('#score')
+  const scoreDisplay = document.querySelector('#score')
   const startBtn= document.querySelector('#start-button')
   const width = 10
   let nextRandom = 0
-  let timerid
+  let timerId
   let score = 0
   const colors = [
     'red', 'green', 'blue', 'orange', 'pink',
@@ -48,16 +48,18 @@ const iTetromino = [
 ]
 
 //Define Tetrominoes array
+const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
 
- const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
- 
-//Define CurrentPosition and Current Rotation variables
+ let currentPosition = 4
+ let currentRotation = 0
 
-let currentPosition = 4
-let currentRotation = 0
+
+
 
 // Select randomly a Tetromino and first rotation
+
 let random = Math.floor(Math.random() * theTetrominoes.length)
+
 let current = theTetrominoes[random][currentRotation]
 
 
@@ -105,6 +107,7 @@ function moveDown(){
 function freeze(){
     if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))){
         current.forEach(index => squares[currentPosition + index].classList.add('taken'))
+
     // New tetromino falling down the screen 
     random = nextRandom
     nextRandom =   Math.floor(Math.random() * theTetrominoes.length)
@@ -113,6 +116,7 @@ function freeze(){
     draw()
     displayShape()
     addScore()
+    gameOver()
     }
 }
 // Move tetromino left, unless edge or blockage
@@ -132,6 +136,7 @@ function moveLeft(){
 function moveRight(){
     undraw()
     const isAtRighEdge = current.some(index => (currentPosition + index) % width === -1)
+
     if(!isAtRightEdge) currentPosition +=1
     
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
@@ -171,15 +176,17 @@ function displayShape() {
     // Remove tetromino form the entire grid //
     displaySquares.forEach(square => {
         square.classList.remove('tetromino')
+        square.style.backgroundColor = ''
     })
     upNextTetrominoes[nextRandom].forEach( index => {
         displaySquares[displayIndex + index].classList.add('tetromino')
+        displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom]
     })
 }
 
 //Define Start/Pause Functionality
 startBtn.addEventListener('click', () => {
-    if (timerid) {
+    if (timerId) {
         clearInterval(timerId)
         timerId = null
     } else {
@@ -217,6 +224,4 @@ function gameOver() {
         clearInterval(timerId)
     }
 }
-
-
 })
