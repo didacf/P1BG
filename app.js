@@ -167,6 +167,7 @@ function rotate() {
         currentRotation = 0
     }
     current = theTetrominoes[random][currentRotation]
+    checkRotatedPosition()
     draw()
 }
 
