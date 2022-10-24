@@ -75,14 +75,14 @@ function undraw() {
   } 
   
 // Assign functions to arrow keys using keycodes, https://www.toptal.com/developers/keycode
-function control(key) {
-  if(key.keyCode === 37) {
+function control(e) {
+  if(e.keyCode === 37) {
     moveLeft()
-  } else if (key.keyCode === 38) {
+  } else if (e.keyCode === 38) {
     rotate()
-  } else if (key.keyCode === 39) {
+  } else if (e.keyCode === 39) {
     moveRight()
-  } else if (key.keyCode === 40) {
+  } else if (e.keyCode === 40) {
     moveDown()
 }
 }
