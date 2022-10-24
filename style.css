@@ -9,7 +9,7 @@
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: yellow;
+    background-color: teal;
 }
 /* Define Grid divs */
 .grid div {
@@ -20,7 +20,7 @@
 /* Define Tetrominoes colors */
 
 .tetromino {
-    background-color: springgreen;
+    background-color: blue;
 }
 
 /* Mini Grid display*/
@@ -30,7 +30,7 @@
     height: 80px;
     display: flex;
     flex-wrap: wrap;
-    background-color: yellow;
+    background-color: teal;
 }
 /* Define mini Grid divs */
 .mini-grid div {
