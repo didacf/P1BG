@@ -10,7 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let timerId
   let score = 0
   const colors = [
-    'red', 'green', 'blue', 'orange', 'pink',
+    'red', 
+    'green',
+    'blue',
+    'orange',
+    'pink',
     'purple'
 ]
     
@@ -52,19 +56,12 @@ const iTetromino = [
 
 //Define Tetrominoes array
 const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino]
-
- let currentPosition = 4
- let currentRotation = 0
-
-
-
+let currentPosition = 4
+let currentRotation = 0
 
 // Select randomly a Tetromino and first rotation
-
 let random = Math.floor(Math.random() * theTetrominoes.length)
-
 let current = theTetrominoes[random][currentRotation]
-
 
 //Define and draw tetromino
 function draw() {
@@ -126,9 +123,7 @@ function freeze(){
 function moveLeft(){
     undraw()
     const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
-    
     if(!isAtLeftEdge) currentPosition -=1
-    
     if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
         currentPosition -=1
     }
@@ -162,8 +157,7 @@ function rotate() {
 // Preview in mini-grid next tetromino
 const displaySquares = document.querySelectorAll('.mini-grid div')
 const displayWidth = 4
-let displayIndex = 0
-
+const displayIndex = 0
 
 // Tetrominos on mini-display without rotation //
 const upNextTetrominoes = [
